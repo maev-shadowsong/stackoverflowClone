@@ -14,3 +14,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/master', function () {
+    return view('adminlte.master');
+});
+
+Route::get('/index', function () {
+    return view('forum.index');
+});
+
+Route::get('/edit', function () {
+    return view('forum.edit');
+});
+
+Route::get('/create', function () {
+    return view('forum.create');
+});
+
+Route::get('/show', function () {
+    return view('forum.show');
+});
+
+Route::get('/komentar', function () {
+    return view('forum.komentar');
+});

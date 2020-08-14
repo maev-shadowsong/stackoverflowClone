@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    background-image: url(../img/background.png);
+}
+
+.count {
+    font-size: 20px;
+}
+
+.count-categories {
+    font-size: 13px;
+}
+
+.count, .count-categories {
+    display: flex;
+   justify-content: center;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0 5px;
+    border-radius: 2px;
+    border: none;
+    background: #e0ece4;
+    color: lightslategray;
+    margin-right: 5px;
+}
+
+.tag:hover {
+    background-color: #dbe3e5;
+    color: blue;
+}
+
+.container {
+    margin-top: 55px;
+    background: white;
+    width: 960px;
+}
+
+.keterangan {
+    display: inline-block;
+}
+
+.vote-up {
+    background-image: url(../img/up.png);
+}
+
+.vote-down {
+    background-image: url(../img/down.png);
+}
+
+.vote-down, .vote-up {
+    height: 35px;
+    width: 58px;
+    display: block;
+    margin: auto;
+    background-position: center;
+}
+
+.foto-profil-penanya {
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+}
+
+.daftar-komentar {
+    width: 600px;
+}
+
+.daftar-komentar p {
+    font-size: 12px;
+}
