@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableProfile extends Migration
+class CreateVoteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateTableProfile extends Migration
      */
     public function up()
     {
-        Schema::create('profil', function (Blueprint $table) {
+        Schema::create('vote', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('nama_lengkap');
-            $table->string('email');
-            $table->string('foto');
+            $table->integer('value');
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('diskusi_id');
+            $table->foreign('diskusi_id')->references('id')->on('diskusi');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateTableProfile extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_profile');
+        Schema::dropIfExists('vote');
     }
 }

@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// cek tampilan
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,3 +38,8 @@ Route::get('/show', function () {
 Route::get('/komentar', function () {
     return view('forum.komentar');
 });
+// batas cek tampilan
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

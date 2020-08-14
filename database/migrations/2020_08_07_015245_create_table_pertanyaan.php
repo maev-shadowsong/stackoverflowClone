@@ -13,11 +13,20 @@ class CreateTablePertanyaan extends Migration
      */
     public function up()
     {
-        Schema::create('pertanyaan', function (Blueprint $table) {
+        Schema::create('diskusi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('judul');
+            $table->string('judul')->nullable();
             $table->string('isi');
+            $table->string('type_diskusi');
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('pertanyaan_id')->nullable();
+            $table->foreign('pertanyaan_id')->references('id')->on('diskusi');
+            $table->integer('jawaban_id')->nullable();
+            $table->foreign('jawaban_id')->references('id')->on('diskusi');
+            $table->integer('jawaban_tepat_id')->nullable();
+            $table->foreign('jawaban_tepat_id')->references('id')->on('diskusi');
             $table->softDeletes();
         });
     }
@@ -29,6 +38,6 @@ class CreateTablePertanyaan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_pertanyaan');
+        Schema::dropIfExists('diskusi');
     }
 }
