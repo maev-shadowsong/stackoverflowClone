@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Diskusi;
+use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth')->only('edit'); // try
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = Diskusi::where('type_diskusi','LIKE','pertanyaan')->with(['Tags','Users','Votes','Jawabans'])->get();
+        return view('forum.index')->with('diskusi',$data);
     }
 }

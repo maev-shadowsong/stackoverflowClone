@@ -17,6 +17,12 @@ class CreateVoteTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('value');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('diskusi_id');
+            $table->foreign('diskusi_id')->references('id')->on('diskusi');
         });
     }
 
