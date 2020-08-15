@@ -13,15 +13,22 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="judul">Judul</label>
-                    <input type="text" class="form-control" id="judul" name="judul" value="{{ old('judul', '') }}" placeholder="tulis judul pertanyaan anda disini">
+                    <input type="text" class="form-control" id="judul" name="judul" value="{{ old('judul', '') }}" placeholder="Tulis judul pertanyaan anda disini">
                     @error('judul')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="isi">Isi</label>
-                    <textarea cols="144" rows="10" class="form-control" id="isi" name="isi" value="{{ old('isi', '') }}" placeholder="tuliskan detail pertanyaan anda disini"></textarea>
+                    <textarea cols="144" rows="10" class="form-control" id="isi" name="isi" value="{{ old('isi', '') }}" placeholder="Tuliskan detail pertanyaan anda disini"></textarea>
                     @error('isi')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="isi">Tag</label>
+                    <input type="text" class="form-control" id="tag" name="tag" value="{{ old('tag', '') }}" placeholder="Tulis tag pertanyaan anda disini">
+                    @error('tag')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>

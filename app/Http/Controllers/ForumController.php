@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB as FacadesDB;
 use DB;
 use App\Diskusi;
+use App\Tag;
 
 class ForumController extends Controller
 {
@@ -19,7 +20,11 @@ class ForumController extends Controller
         $diskusi = Diskusi::all();
         return view('forum.index', compact('diskusi'));
     }
-
+    public function indexku()
+    {
+        $diskusi = Diskusi::all();
+        return view('forum.pertanyaanku', compact('diskusi'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -45,11 +50,15 @@ class ForumController extends Controller
         ]);
         $post = Diskusi::create([
             "judul" => $request["judul"],
-            "isi" => $request["isi"],
+            "isi" => $request["isi"]
             // "type_diskusi" => $request["Pertanyaan"]
-
         ]);
-        return redirect('/forum/index')->with('success', 'Pertanyaan berhasil diajukan');
+
+        $post = Tag::create([
+            "value" => $request["tag"]
+        ]);
+        return redirect('/forum/pertanyaanku')->with('success', 'Pertanyaan berhasil diajukan');
+
         // return redirect()->route('forum.index');
     }
 
@@ -73,8 +82,8 @@ class ForumController extends Controller
      */
     public function edit($id)
     {
-        $diskusi = Diskusi::find($id);
-        return view('forum.edit', compact('diskusi'));
+        $post = Diskusi::find($id);
+        return view('forum.edit', compact('post'));
     }
 
     /**
@@ -94,7 +103,7 @@ class ForumController extends Controller
             "judul" => $request["judul"],
             "isi" => $request["isi"]
         ]);
-        return redirect('/forum/{id}')->with('success', 'Data telah berhasil di update');
+        return redirect('/forum/pertanyaanku')->with('success', 'Data telah berhasil di update');
     }
 
     /**
@@ -106,7 +115,7 @@ class ForumController extends Controller
     public function destroy($id)
     {
         Diskusi::destroy($id);
-        return redirect('/forum/index')->with('successs', 'post berhasil dihapus');
+        return redirect('/forum/pertanyaanku')->with('successs', 'post berhasil dihapus');
     }
 
 

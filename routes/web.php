@@ -45,16 +45,19 @@ Route::get('/master', function () {
 
 //Route::resource('forum', 'HomeController')->middleware('auth');
 //Route::resource('forum', 'ForumController');
+Route::get('/forum', 'ForumController@index');
 Route::get('/forum/create', 'ForumController@create');
 Route::post('/forum/create', 'ForumController@store');
 Route::get('/forum/index', 'ForumController@index');
+Route::get('/forum/pertanyaanku', 'ForumController@indexku');
 Route::get('/forum/{id}/edit', 'ForumController@edit');
-Route::put('/forum/{id}', 'PertanyaanController@update');
+Route::put('/forum/{id}', 'ForumController@update');
 Route::get('/forum/{id}', 'ForumController@show');
 Route::get('/forum/komentar', 'ForumController@komentar');
 Route::post('/forum/komentar', 'ForumController@store_komentar');
 Route::get('/forum/jawaban', 'ForumController@jawaban');
 Route::post('/forum/jawaban', 'ForumController@store_jawaban');
+Route::delete('/forum/{id}', 'ForumController@destroy');
 
 
 

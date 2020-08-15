@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Diskusi extends Model
+class Tag extends Model
 {
-    protected $table = "diskusi";
+    //
+    protected $table = "tag";
     //protected $fillable = ["judul", "isi"];
     protected $guarded = [];
 }

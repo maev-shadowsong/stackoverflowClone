@@ -12,14 +12,17 @@
   </div>
 
   <div class="question">
+
     <div class="row border pt-2">
       <div class="col ml-3">
-        <div class="row mt-4">
+        <div class="row mt-3">
           <div class="col">
             <div class="count">0</div>
             <div class="count-categories"><a href="">votes</a></div>
           </div>
+
           <div class="col">
+
             <div class="count">0</div>
             <div class="count-categories"><a href="">answer</a></div>
           </div>
@@ -30,9 +33,10 @@
         </div>
       </div>
 
+
       <div class="col-9 ml-3 pt-3">
         @foreach($diskusi as $key=> $post)
-        <h4><a href="/forum/{id}">{{$post->judul}}</a></>
+        <h4><a href="/forum/{id}/edit">{{$post->judul}}</a></>
           <div class="d-flex bd-highlight mb-1">
             @endforeach
 
