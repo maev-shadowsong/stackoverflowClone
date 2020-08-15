@@ -35,4 +35,14 @@ class Diskusi extends Model
     {
         return $this->hasMany(static::class, 'pertanyaan_id')->where('type_diskusi', 'LIKE', '%jawab%')->orderBy('type_diskusi', 'asc');
     }
+
+    public function Koments()
+    {
+        return $this->hasMany(static::class, 'pertanyaan_id')->where('type_diskusi', 'LIKE', '%komen%')->orderBy('type_diskusi', 'asc');
+    }
+
+    public function KomentsJawab()
+    {
+        return $this->hasMany(static::class, 'jawaban_id')->where('type_diskusi', 'LIKE', '%komen%')->orderBy('type_diskusi', 'asc');
+    }
 }

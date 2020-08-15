@@ -50,9 +50,8 @@ class ForumController extends Controller
         ]);
         $post = Diskusi::create([
             "judul" => $request["judul"],
-            "isi" => $request["isi"]
-            // "type_diskusi" => $request["Pertanyaan"]
-        ]);
+            "isi" => $request["isi"],
+            "type_diskusi" => $request["Pertanyaan"]
 
         $post = Tag::create([
             "value" => $request["tag"]
@@ -70,7 +69,7 @@ class ForumController extends Controller
      */
     public function show($id)
     {
-        $diskusi = Diskusi::find($id);
+        $diskusi = Diskusi::find($id)->with(['Tags','Users','Votes','Jawabans','Koments','KomentsJawab'])->get();
         return view('forum.show', compact('diskusi'));
     }
 
