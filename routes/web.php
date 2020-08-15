@@ -38,8 +38,14 @@ Route::get('/show', function () {
 Route::get('/komentar', function () {
     return view('forum.komentar');
 });
+
 // batas cek tampilan
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('profil', 'ProfilController@edit')->name('forum.profil');
+
+Route::post('profil', 'ProfilController@update');
+
