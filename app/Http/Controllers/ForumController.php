@@ -46,7 +46,7 @@ class ForumController extends Controller
         $post = Diskusi::create([
             "judul" => $request["judul"],
             "isi" => $request["isi"],
-            // "type_diskusi" => $request["Pertanyaan"]
+            "type_diskusi" => $request["Pertanyaan"]
 
         ]);
         return redirect('/forum/index')->with('success', 'Pertanyaan berhasil diajukan');
@@ -61,7 +61,7 @@ class ForumController extends Controller
      */
     public function show($id)
     {
-        $diskusi = Diskusi::find($id);
+        $diskusi = Diskusi::find($id)->with(['Tags','Users','Votes','Jawabans','Koments','KomentsJawab'])->get();
         return view('forum.show', compact('diskusi'));
     }
 

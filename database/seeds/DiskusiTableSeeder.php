@@ -26,17 +26,6 @@ class DiskusiTableSeeder extends Seeder
 
         DB::table('diskusi')->insert([
             [
-                'isi'               => 'Woy jangan nyampah woy',
-                'jawaban_id'        =>  2,
-                'type_diskusi'      => 'komentar',
-                'user_id'           => 2,
-                'created_at'        => \Carbon\Carbon::now(),
-                'updated_at'        => \Carbon\Carbon::now()
-            ]
-        ]);
-
-        DB::table('diskusi')->insert([
-            [
                 'isi'               => 'Wah kurang tau sob, mungkin bawah ane tau.',
                 'pertanyaan_id'     =>  1,
                 'type_diskusi'      => 'jawaban',
@@ -49,6 +38,17 @@ class DiskusiTableSeeder extends Seeder
                 'pertanyaan_id'     =>  1,
                 'type_diskusi'      => 'komentar',
                 'user_id'           => 4,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
+            ]
+        ]);
+
+        DB::table('diskusi')->insert([
+            [
+                'isi'               => 'Woy jangan nyampah woy',
+                'jawaban_id'        =>  2,
+                'type_diskusi'      => 'komentar',
+                'user_id'           => 2,
                 'created_at'        => \Carbon\Carbon::now(),
                 'updated_at'        => \Carbon\Carbon::now()
             ]

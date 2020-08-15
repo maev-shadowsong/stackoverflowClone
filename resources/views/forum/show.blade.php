@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row pt-4">
         <div class="col-10">
-            <h3 class="ml-5">Lorem ipsum dolor sit amet?</h3>
+            <h3 class="ml-5">{{$diskusi[0]->judul}}</h3>
         </div>
         <div class="col">
             <button type="button" class="btn btn-info">Bertanya?</button>
@@ -15,19 +15,18 @@
         <div class="row mb-5">
             <div style="width: 90px;">
                 <a href="" class="vote-up"></a>
-                <div style="font-size: 30px; text-align: center; padding: 0;">0</div>
+                <div style="font-size: 30px; text-align: center; padding: 0;">{{$diskusi[0]->votes->sum('value')}}</div>
                 <a href="" class="vote-down"></a>
             </div>
             <div class="col-md-10 mr-md-auto">
                 <p style="font-size: 18px">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum quo incidunt praesentium deserunt, similique ratione magni quibusdam voluptates veritatis iste magnam, illo iusto placeat exercitationem eveniet! Iste magnam doloremque in doloribus. Sequi, totam quia? Magnam repellat architecto vel ad culpa!
+                    {{$diskusi[0]->isi}}
                 </p>
                 {{-- tags --}}
                 <div class="d-flex bd-highlight mb-1">
-                    <div class="bd-highlight"><a href="" class="tag">html</a></div>
-                    <div class="bd-highlight"><a href="" class="tag">css</a></div>
-                    <div class="bd-highlight"><a href="" class="tag">javascript</a></div>
-                    <div class="bd-highlight"><a href="" class="tag">bootstrap</a></div>
+                    @foreach($diskusi[0]->tags as $tag)
+                    <div class="bd-highlight"><a href="" class="tag">{{$tag->value}}</a></div>
+                    @endforeach
                 </div>
                 {{-- end tags --}}
 
@@ -36,7 +35,7 @@
                 <div class="row">
                     <div class="col-md-4 ml-auto">
                         <div style="font-size: 15px; color:gray;">
-                            pertanyaan <span>2 jam</span> lalu
+                            ditanyakan pada <span>{{date('d-m-Y', strtotime($diskusi[0]->created_at))}}</span>
                         </div>
                         <div class="d-flex flex-row bd-highlight mb-3">
                             <div class="p-2 bd-highlight">
@@ -45,10 +44,10 @@
                             </div>
                             <div class="p-2 bd-highlight">
                                 <div>
-                                    <a href="">yoas98</a>
+                                    <a href="">{{$diskusi[0]->Users->name}}</a>
                                 </div>
                                 <div>
-                                    <b>200</b>
+                                    <b>{{$diskusi[0]->Users->reputasi}}</b>
                                 </div>
                             </div>
                         </div>
@@ -59,15 +58,13 @@
 
                 {{-- komentar --}}
                 <div class="daftar-komentar">
+                    @foreach($diskusi[0]->koments as $komen)
                     <hr>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">naruto</a></b></span> <span style="color: gray">2 jam lalu</span>
+                        {{$komen->isi}} &nbsp;- <span><b><a href="">{{$komen->Users->name}}</a></b></span> <span style="color: gray">{{date('d-m-Y', strtotime($komen->created_at))}}</span>
                     </p>
                     <hr>
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">sasuke</a></b></span> <span style="color: gray">2 jam lalu</span>
-                    </p>
-                    <hr>
+                    @endforeach
                     <div>
                         <a href="">Tambah Komentar</a>
                     </div>
@@ -76,33 +73,26 @@
             </div>
         </div>
 
-        <h4 class="ml-4 mb-4">3 jawaban</h4>
+        <h4 class="ml-4 mb-4">{{$diskusi[0]->jawabans->count()}} jawaban</h4>
 
         <div class="jawaban">
+            @foreach($diskusi[0]->jawabans as $jawaban)
             <div class="row">
                 <div style="width: 90px;">
                     <a href="" class="vote-up"></a>
-                    <div style="font-size: 30px; text-align: center; padding: 0;">0</div>
+                    <div style="font-size: 30px; text-align: center; padding: 0;">{{$jawaban->votes->sum('value')}}</div>
                     <a href="" class="vote-down"></a>
                 </div>
                 <div class="col-md-10 mr-md-auto">
                     <p style="font-size: 18px">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum quo incidunt praesentium deserunt, similique ratione magni quibusdam voluptates veritatis iste magnam, illo iusto placeat exercitationem eveniet! Iste magnam doloremque in doloribus. Sequi, totam quia? Magnam repellat architecto vel ad culpa!
+                        {{$jawaban->isi}}
                     </p>
-                    {{-- tags --}}
-                    <div class="d-flex bd-highlight mb-1">
-                        <div class="bd-highlight"><a href="" class="tag">html</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">css</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">javascript</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">bootstrap</a></div>
-                    </div>
-                    {{-- end tags --}}
                     {{-- profil penanya --}}
 
                     <div class="row">
                         <div class="col-md-4 ml-auto">
                             <div style="font-size: 15px; color:gray;">
-                                pertanyaan <span>2 jam</span> lalu
+                                dijawab pada <span>{{$jawaban->created_at}}</span>
                             </div>
                             <div class="d-flex flex-row bd-highlight mb-3">
                                 <div class="p-2 bd-highlight">
@@ -111,10 +101,10 @@
                                 </div>
                                 <div class="p-2 bd-highlight">
                                     <div>
-                                        <a href="">yoas98</a>
+                                        <a href="">{{$jawaban->Users->name}}</a>
                                     </div>
                                     <div>
-                                        <b>200</b>
+                                        <b>{{$jawaban->Users->reputasi}}</b>
                                     </div>
                                 </div>
                             </div>
@@ -125,15 +115,17 @@
 
                     {{-- komentar --}}
                     <div class="daftar-komentar">
+                        @foreach($jawaban->KomentsJawab as $komen)
                         <hr>
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">naruto</a></b></span> <span style="color: gray">2 jam lalu</span>
+                            {{$komen->isi}} &nbsp;- <span><b><a href="">{{$komen->Users->name}}</a></b></span> <span style="color: gray">{{date('d-m-Y', strtotime($komen->created_at))}}</span>
                         </p>
                         <hr>
-                        <p>
+                        @endforeach
+                        {{-- <p>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">sasuke</a></b></span> <span style="color: gray">2 jam lalu</span>
                         </p>
-                        <hr>
+                        <hr> --}}
                         <div>
                             <a href="">Tambah Komentar</a>
                         </div>
@@ -142,134 +134,7 @@
                 </div>
             </div>
             <hr>
-
-            <div class="row">
-                <div style="width: 90px;">
-                    <a href="" class="vote-up"></a>
-                    <div style="font-size: 30px; text-align: center; padding: 0;">0</div>
-                    <a href="" class="vote-down"></a>
-                </div>
-                <div class="col-md-10 mr-md-auto">
-                    <p style="font-size: 18px">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum quo incidunt praesentium deserunt, similique ratione magni quibusdam voluptates veritatis iste magnam, illo iusto placeat exercitationem eveniet! Iste magnam doloremque in doloribus. Sequi, totam quia? Magnam repellat architecto vel ad culpa!
-                    </p>
-                    {{-- tags --}}
-                    <div class="d-flex bd-highlight mb-1">
-                        <div class="bd-highlight"><a href="" class="tag">html</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">css</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">javascript</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">bootstrap</a></div>
-                    </div>
-                    {{-- end tags --}}
-                    {{-- profil penanya --}}
-
-                    <div class="row">
-                        <div class="col-md-4 ml-auto">
-                            <div style="font-size: 15px; color:gray;">
-                                pertanyaan <span>2 jam</span> lalu
-                            </div>
-                            <div class="d-flex flex-row bd-highlight mb-3">
-                                <div class="p-2 bd-highlight">
-                                    <a href=""><img src="{{ asset('/adminlte/dist/img/user2-160x160.jpg') }}" alt="" class="foto-profil-penanya">
-                                    </a>
-                                </div>
-                                <div class="p-2 bd-highlight">
-                                    <div>
-                                        <a href="">yoas98</a>
-                                    </div>
-                                    <div>
-                                        <b>200</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- end profil penanya --}}
-
-                    {{-- komentar --}}
-                    <div class="daftar-komentar">
-                        <hr>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">naruto</a></b></span> <span style="color: gray">2 jam lalu</span>
-                        </p>
-                        <hr>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">sasuke</a></b></span> <span style="color: gray">2 jam lalu</span>
-                        </p>
-                        <hr>
-                        <div>
-                            <a href="">Tambah Komentar</a>
-                        </div>
-                    </div>
-                    {{-- end komentar --}}
-                </div>
-            </div>
-            <hr>
-
-            <div class="row">
-                <div style="width: 90px;">
-                    <a href="" class="vote-up"></a>
-                    <div style="font-size: 30px; text-align: center; padding: 0;">0</div>
-                    <a href="" class="vote-down"></a>
-                </div>
-                <div class="col-md-10 mr-md-auto">
-                    <p style="font-size: 18px">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum quo incidunt praesentium deserunt, similique ratione magni quibusdam voluptates veritatis iste magnam, illo iusto placeat exercitationem eveniet! Iste magnam doloremque in doloribus. Sequi, totam quia? Magnam repellat architecto vel ad culpa!
-                    </p>
-                    {{-- tags --}}
-                    <div class="d-flex bd-highlight mb-1">
-                        <div class="bd-highlight"><a href="" class="tag">html</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">css</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">javascript</a></div>
-                        <div class="bd-highlight"><a href="" class="tag">bootstrap</a></div>
-                    </div>
-                    {{-- end tags --}}
-                    {{-- profil penanya --}}
-
-                    <div class="row">
-                        <div class="col-md-4 ml-auto">
-                            <div style="font-size: 15px; color:gray;">
-                                pertanyaan <span>2 jam</span> lalu
-                            </div>
-                            <div class="d-flex flex-row bd-highlight mb-3">
-                                <div class="p-2 bd-highlight">
-                                    <a href=""><img src="{{ asset('/adminlte/dist/img/user2-160x160.jpg') }}" alt="" class="foto-profil-penanya">
-                                    </a>
-                                </div>
-                                <div class="p-2 bd-highlight">
-                                    <div>
-                                        <a href="">yoas98</a>
-                                    </div>
-                                    <div>
-                                        <b>200</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- end profil penanya --}}
-
-                    {{-- komentar --}}
-                    <div class="daftar-komentar">
-                        <hr>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">naruto</a></b></span> <span style="color: gray">2 jam lalu</span>
-                        </p>
-                        <hr>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero temporibus, quasi corrupti aperiam praesentium odio veritatis doloribus vel enim, magnam fugit voluptatem! Rem, sapiente eaque autem commodi optio dolorem ratione. &nbsp;- <span><b><a href="">sasuke</a></b></span> <span style="color: gray">2 jam lalu</span>
-                        </p>
-                        <hr>
-                        <div>
-                            <a href="">Tambah Komentar</a>
-                        </div>
-                    </div>
-                    {{-- end komentar --}}
-                </div>
-            </div>
-            <hr>
+            @endforeach
         </div>
 
         {{-- form jawaban --}}
