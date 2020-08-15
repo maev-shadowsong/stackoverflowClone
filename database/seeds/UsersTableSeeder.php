@@ -19,28 +19,36 @@ class UsersTableSeeder extends Seeder
                 'email'             => 'paijo@example.com',
                 'nama_lengkap'      => 'Paijo bin Painjul',
                 'password'          => bcrypt('paijo123'),
-                'reputasi'          => 20
+                'reputasi'          => 20,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ],
             [
                 'name'              => 'Paido',
                 'email'             => 'paido@example.com',
                 'nama_lengkap'      => 'Paido bin Painjul',
                 'password'          => bcrypt('paido123'),
-                'reputasi'          => 0
+                'reputasi'          => 0,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ],
             [
                 'name'              => 'Paojo',
                 'email'             => 'paojo@example.com',
                 'nama_lengkap'      => 'Paojo bin Painjul',
                 'password'          => bcrypt('paojo123'),
-                'reputasi'          => 10
+                'reputasi'          => 10,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ],
             [
                 'name'              => 'Paimo',
                 'email'             => 'paimo@example.com',
                 'nama_lengkap'      => 'Paimo bin Painjul',
                 'password'          => bcrypt('paimo123'),
-                'reputasi'          => 60
+                'reputasi'          => 60,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ],
         ]);
     }

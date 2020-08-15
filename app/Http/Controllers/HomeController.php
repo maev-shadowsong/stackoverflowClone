@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Diskusi;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
@@ -26,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Diskusi::all();
+        $data = Diskusi::where('type_diskusi','LIKE','pertanyaan')->with(['Tags','Users','Votes','Jawabans'])->get();
         return view('forum.index')->with('diskusi',$data);
     }
 }

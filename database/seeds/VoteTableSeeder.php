@@ -17,12 +17,23 @@ class VoteTableSeeder extends Seeder
             [
                 'value'             => 1,
                 'diskusi_id'        => 1,
-                'user_id'           => 4
+                'user_id'           => 4,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
+            ],
+            [
+                'value'             => 1,
+                'diskusi_id'        => 1,
+                'user_id'           => 3,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ],
             [
                 'value'             => -1,
                 'diskusi_id'        => 2,
-                'user_id'           => 4
+                'user_id'           => 4,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ]
         ]);
     }

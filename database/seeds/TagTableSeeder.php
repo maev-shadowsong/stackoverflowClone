@@ -16,7 +16,21 @@ class TagTableSeeder extends Seeder
         DB::table('tag')->insert([
             [
                 'value'             => 'git',
-                'diskusi_id'        => 1
+                'diskusi_id'        => 1,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
+            ],
+            [
+                'value'             => 'devops',
+                'diskusi_id'        => 1,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
+            ],
+            [
+                'value'             => 'utility',
+                'diskusi_id'        => 1,
+                'created_at'        => \Carbon\Carbon::now(),
+                'updated_at'        => \Carbon\Carbon::now()
             ]
         ]);
     }
