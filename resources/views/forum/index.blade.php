@@ -31,8 +31,8 @@
       </div>
 
       <div class="col-9 ml-3 pt-3">
-        @foreach($diskusi as $key=> $post)
-        <h4><a href="/forum/{id}">{{$post->judul}}</a></>
+        @foreach($diskusi as $topic)
+        <h4><a href="/forum/{{$topic->id}}">{{$topic->judul}}</a></>
           <div class="d-flex bd-highlight mb-1">
             @endforeach
 

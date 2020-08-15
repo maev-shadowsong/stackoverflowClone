@@ -11,9 +11,7 @@
 |
 */
 // cek tampilan
-Route::get('/', function () {
-    return view();
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/master', function () {
     return view('adminlte.master');

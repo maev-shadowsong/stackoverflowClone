@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Diskusi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB as FacadesDB;
-//use DB;
-//use App\Diskusi;
 
 class HomeController extends Controller
 {
@@ -17,7 +16,7 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth')->only('edit'); // try
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -27,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = Diskusi::all();
+        return view('forum.index')->with('diskusi',$data);
     }
 }
