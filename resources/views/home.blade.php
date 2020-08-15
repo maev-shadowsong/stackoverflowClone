@@ -15,7 +15,22 @@
                     @endif
 
                     You are logged in!
-                </div>
+
+                    <div class="mt-5">
+                        <a href="/profil">
+                            <button type="button" class="btn btn-primary btn-sm">upload foto</button>
+                        </div>
+                        </a>
+                        <div class="mt-2">
+                            <a href="/index">
+                                <button type="button" class="btn btn-primary btn-sm">masuk forum</button>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+
             </div>
         </div>
     </div>

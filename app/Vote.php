@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Vote extends Model
 {
-
-    protected $table = "tag";
+    protected $table = "vote";
 
     protected $fillable = ["value", "diskusi_id"];
 
     public function diskusi()
     {
-        return $this->belongsTo(Diskusi::class, 'diskusi_id');
+    	return $this->belongsTo(Diskusi::class, 'diskusi_id');
     }
 }

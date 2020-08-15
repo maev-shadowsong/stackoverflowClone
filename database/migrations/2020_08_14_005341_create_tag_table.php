@@ -18,9 +18,6 @@ class CreateTagTable extends Migration
             $table->timestamps();
             $table->string('value');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-
             $table->unsignedBigInteger('diskusi_id');
             $table->foreign('diskusi_id')->references('id')->on('diskusi');
         });
