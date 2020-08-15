@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Diskusi extends Model
 {
@@ -25,13 +26,11 @@ class Diskusi extends Model
         return $this->hasMany('App\Vote');
     }
 
-    public function Jawabans()
-    {
-        return $this->belongsTo(self::class, 'pertanyaan_id');
-    }
+    public function parent() {
+        return $this->belongsToOne(static::class, 'pertanyaan_id');
+      }
 
-    public function children()
-    {
-        return $this->hasMany(self::class, 'color_id');
+    public function Jawabans() {
+    return $this->hasMany(static::class, 'pertanyaan_id')->where('type_diskusi','LIKE','%jawab%')-> orderBy('type_diskusi', 'asc');
     }
 }

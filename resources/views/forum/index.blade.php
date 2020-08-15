@@ -21,7 +21,7 @@
             <div class="count-categories"><a href="">votes</a></div>
           </div>
           <div class="col">
-            <div class="count">0</div>
+            <div class="count">{{$topic->jawabans->count()}}</div>
             <div class="count-categories"><a href="">answer</a></div>
           </div>
           <div class="col">
