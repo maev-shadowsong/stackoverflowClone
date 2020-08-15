@@ -39,6 +39,12 @@ Route::get('/master', function () {
 // batas cek tampilan
 
 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('profil', 'ProfilController@edit')->name('forum.profil');
+
+Route::post('profil', 'ProfilController@update');
+
 
 
 //Route::resource('forum', 'HomeController')->middleware('auth');
